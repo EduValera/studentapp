@@ -3,6 +3,11 @@ FROM amazoncorretto:17-alpine AS build
 
 WORKDIR /app
 COPY . .
+
+# 🔥 IMPORTANTE: DAR PERMISOS A mvnw
+RUN chmod +x mvnw
+
+# Ejecutar el build
 RUN ./mvnw clean package -DskipTests
 
 # Etapa 2: Runtime
